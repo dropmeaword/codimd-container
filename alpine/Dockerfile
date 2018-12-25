@@ -13,9 +13,9 @@ ENV NODE_ENV=production
 ENV CMD_ALLOW_PDF_EXPORT=false
 
 RUN apk add --no-cache --virtual .download wget  ca-certificates && \
-    wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
-    tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
-    rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
+    wget https://github.com/dropmeaword/dockerize/releases/download/armhf/dockerize-$DOCKERIZE_VERSION-armhf.rpi.tar.gz && \
+    tar -C /usr/local/bin -xzvf dockerize-$DOCKERIZE_VERSION-armhf.rpi.tar.gz && \
+    rm dockerize-$DOCKERIZE_VERSION-armhf.rpi.tar.gz && \
     apk del .download
 
 ENV GOSU_VERSION 1.11
