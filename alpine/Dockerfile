@@ -68,8 +68,7 @@ RUN apk add --no-cache --virtual .dep build-base python git jq bash && \
     rm -f /codimd/config.json && ln -s /files/config.json /codimd/config.json && \
     rm -f /codimd/.sequelizerc && ln -s /files/.sequelizerc /codimd/.sequelizerc && \
     # Install NPM dependencies and build project
-    yarn install --pure-lockfile && \
-    yarn install --production=false --pure-lockfile && \
+    npm install && \
     #yarn global add webpack && \
     npm run build && \
     # Clean up this layer
