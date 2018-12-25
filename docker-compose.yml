@@ -14,24 +14,23 @@ services:
       backend:
     restart: always
 
-  # app:
-  #   # Uncomment the following section to build the image yourself:
-  #   #build:
-  #   #  context: .
-  #   #  dockerfile: debian/Dockerfile
-  #   #  args:
-  #   #    - "VERSION=master"
-  #   #    - "CODIMD_REPOSITORY=https://github.com/hackmdio/codimd.git"
-  #   image: hackmdio/hackmd:1.2.1
-  #   environment:
-  #     - CMD_DB_URL=postgres://hackmd:hackmdpass@database:5432/hackmd
-  #   ports:
-  #     - "3000:3000"
-  #   networks:
-  #     backend:
-  #   restart: always
-  #   depends_on:
-  #     - database
+  app:
+    build:
+     context: .
+     dockerfile: alpine/Dockerfile
+     args:
+       - "VERSION=master"
+       - "CODIMD_REPOSITORY=https://github.com/hackmdio/codimd.git"
+    # image: hackmdio/hackmd:1.2.1
+    environment:
+      - CMD_DB_URL=postgres://hackmd:hackmdpass@database:5432/hackmd
+    ports:
+      - "3000:3000"
+    networks:
+      backend:
+    restart: always
+    depends_on:
+      - database
 
 # Define networks to allow best isolation
 networks:
